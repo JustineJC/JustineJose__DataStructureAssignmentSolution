@@ -1,16 +1,16 @@
-import java.util.Scanner;
 import java.util.*;
-import java.util.Arrays;
 
 public class skyscaperArchitect {
     static Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         ArrayList<Integer> bucket = new ArrayList<>();
         int n, size, value = 0;
         System.out.println("\n Enter the total no of floors in the building");
         n = sc.nextInt();// intitalize an array dynamicaly
         int[] arr = new int[n + 1];
+
+        ArrayList<Integer> arr1 = new ArrayList<>();
         size = n;// size holds the total nos of floors
 
         if (n > 0) { // if n value is above zero
@@ -18,11 +18,13 @@ public class skyscaperArchitect {
             for (int i = 1; i <= n; i++) {
                 System.out.println("enter the floor size given on day : " + i);
                 value = sc.nextInt();
-                if (value <= n) {
+                if (value <= n && !arr1.contains(value)) { //check if there are duplicate elements
                     arr[i] = value;
+                    arr1.add(value);
                 } else {
                     System.out
-                            .println("The total floor size should be less than or equal to building size (" + n + ")");
+                            .println("The total floor size should be less than or equal to building size (" + n + ") ");
+                    System.out.println("Duplicate floor not allowed ");
                     return;
                 }
             }
